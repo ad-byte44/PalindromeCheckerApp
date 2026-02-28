@@ -4,15 +4,15 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case demonstrates the use of a **Stack** data structure to reverse characters and validate whether a string is a palindrome.
+This use case demonstrates the behavioral difference between two fundamental linear data structures — **Stack (LIFO)** and **Queue (FIFO)** — and uses them together to validate palindrome logic.
 
 ---
 
-# 🚀 Use Case 5 (UC5): Stack-Based Palindrome Checker
+# 🚀 Use Case 6 (UC6): Queue + Stack Based Palindrome Check
 
 ## 🎯 Goal
 
-Use a stack to reverse the characters of a string and validate whether it is a palindrome.
+Demonstrate the difference between FIFO and LIFO principles using Queue and Stack to validate whether a string is a palindrome.
 
 ---
 
@@ -20,41 +20,45 @@ Use a stack to reverse the characters of a string and validate whether it is a p
 
 1. Program starts.
 2. A string is defined.
-3. Characters of the string are pushed into a stack.
-4. Characters are popped from the stack (reversed order).
-5. The reversed string is formed.
-6. The original string is compared with the reversed string.
-7. Result is printed.
-8. Program exits.
+3. Characters are pushed into a stack.
+4. Characters are enqueued into a queue.
+5. Characters are popped from the stack.
+6. Characters are dequeued from the queue.
+7. The popped and dequeued characters are compared.
+8. Result is displayed.
+9. Program exits.
 
 ---
 
 ## 🧠 Key Concepts Used
 
+### 🔹 Queue
+A linear data structure that follows the **First In First Out (FIFO)** principle.
+
 ### 🔹 Stack
 A linear data structure that follows the **Last In First Out (LIFO)** principle.
 
-### 🔹 Push Operation
-Used to insert characters into the stack.
+### 🔹 Enqueue & Dequeue Operations
+- `add()` → Insert into queue
+- `remove()` → Remove from queue
 
-### 🔹 Pop Operation
-Used to remove characters from the stack in reverse order.
+### 🔹 Push & Pop Operations
+- `push()` → Insert into stack
+- `pop()` → Remove from stack
 
-### 🔹 Reversal Logic
-Since stack follows LIFO, it naturally reverses the order of elements.
+### 🔹 Stack vs Queue
+This use case clearly demonstrates how:
+- Queue maintains original order (FIFO)
+- Stack reverses order (LIFO)
 
-### 🔹 equals() Method
-Used to compare the actual content of two strings.
+Comparing both outputs validates palindrome logic.
+
+---
+
+## 🗂️ Data Structures Used
+
+- `Stack<Character>`
+- `Queue<Character>` (Implemented using `LinkedList`)
 
 ---
 
-## 🗂️ Data Structure Used
-
-### Stack
-
-In this use case:
-- `java.util.Stack` is used.
-- Characters are pushed one by one.
-- Popping elements gives reversed order.
-
----
