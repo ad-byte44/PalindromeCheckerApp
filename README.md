@@ -4,15 +4,15 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case demonstrates an optimized approach using a **Deque (Double Ended Queue)** to efficiently compare characters from both ends without creating additional reversal structures.
+This use case demonstrates a **Linked List-based palindrome validation technique**, strengthening understanding of dynamic data structures and pointer manipulation.
 
 ---
 
-# 🚀 Use Case 7 (UC7): Deque-Based Optimized Palindrome Checker
+# 🚀 Use Case 8 (UC8): Linked List Based Palindrome Checker
 
 ## 🎯 Goal
 
-Use a Deque to compare front and rear elements of a string to validate palindrome logic efficiently.
+Check whether a string is a palindrome using a **Singly Linked List** by reversing the second half and comparing both halves.
 
 ---
 
@@ -20,10 +20,10 @@ Use a Deque to compare front and rear elements of a string to validate palindrom
 
 1. Program starts.
 2. A string is defined.
-3. Characters are inserted into a Deque.
-4. First and last characters are removed.
-5. Characters are compared.
-6. Comparison continues until Deque is empty or mismatch is found.
+3. The string is converted into a singly linked list.
+4. The middle of the list is found using the **Fast and Slow Pointer technique**.
+5. The second half of the list is reversed in-place.
+6. The first half and reversed second half are compared.
 7. Result is displayed.
 8. Program exits.
 
@@ -31,32 +31,36 @@ Use a Deque to compare front and rear elements of a string to validate palindrom
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Deque (Double Ended Queue)
+### 🔹 Singly Linked List
 
-A data structure that allows insertion and deletion from both front and rear ends.
+A dynamic data structure where each element (node) contains:
+- Data
+- Reference to the next node
 
-### 🔹 Front and Rear Access
+### 🔹 Node Traversal
 
-- `addLast()` → Insert at rear
-- `removeFirst()` → Remove from front
-- `removeLast()` → Remove from rear
+Sequential access to elements using `next` references.
 
-This enables direct comparison of first and last characters.
+### 🔹 Fast and Slow Pointer Technique
 
-### 🔹 Optimized Data Handling
+- `Slow` pointer moves one step at a time.
+- `Fast` pointer moves two steps at a time.
+- Used to efficiently find the middle of the list in **O(n)** time.
 
-Unlike Stack + Queue approach:
-- No separate reversal string required
-- No duplicate storage structures
-- Cleaner and more efficient logic
+### 🔹 In-Place Reversal
+
+The second half of the list is reversed without using extra memory, improving efficiency.
 
 ---
 
 ## 🗂️ Data Structure Used
 
-### Deque
+### Singly Linked List
 
-Implemented using:
+- Custom `Node` class created.
+- Nodes connected using `next` references.
+- No built-in collections used.
+- Demonstrates manual memory and pointer handling.
 
-```java
-Deque<Character> deque = new ArrayDeque<>();
+---
+
