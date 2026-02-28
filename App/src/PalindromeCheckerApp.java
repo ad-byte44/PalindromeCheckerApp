@@ -1,34 +1,81 @@
 /*
- * UseCase11PalindromeCheckerApp.java
- * Palindrome Checker Application - UC11
+ * UseCase12PalindromeCheckerApp.java
+ * Palindrome Checker Application - UC12
  * Version 1.0
  */
 
-// PalindromeChecker Service Class
-class PalindromeChecker {
+import java.util.Stack;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
-    // Public method to check palindrome
-    public boolean checkPalindrome(String input) {
+// Strategy Interface
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
-        if (input == null) {
-            return false;
-        }
+// Stack-Based Strategy
+class StackStrategy implements PalindromeStrategy {
 
-        // Normalize input (optional enhancement)
+    @Override
+    public boolean check(String input) {
+
         String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-        int start = 0;
-        int end = normalized.length() - 1;
+        Stack<Character> stack = new Stack<>();
 
-        while (start < end) {
-            if (normalized.charAt(start) != normalized.charAt(end)) {
+        for (char ch : normalized.toCharArray()) {
+            stack.push(ch);
+        }
+
+        for (char ch : normalized.toCharArray()) {
+            if (ch != stack.pop()) {
                 return false;
             }
-            start++;
-            end--;
         }
 
         return true;
+    }
+}
+
+// Deque-Based Strategy
+class DequeStrategy implements PalindromeStrategy {
+
+    @Override
+    public boolean check(String input) {
+
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char ch : normalized.toCharArray()) {
+            deque.addLast(ch);
+        }
+
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+// Context Class
+class PalindromeChecker {
+
+    private PalindromeStrategy strategy;
+
+    public PalindromeChecker(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void setStrategy(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public boolean execute(String input) {
+        return strategy.check(input);
     }
 }
 
@@ -36,24 +83,27 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Step 1: Create object of PalindromeChecker
-        PalindromeChecker checker = new PalindromeChecker();
+        String input = "A man a plan a canal Panama";
 
-        // Step 2: Define test string
-        String original = "Madam";
+        // Choose strategy dynamically
+        PalindromeStrategy strategy = new StackStrategy();
+        PalindromeChecker checker = new PalindromeChecker(strategy);
 
-        // Step 3: Call service method
-        boolean result = checker.checkPalindrome(original);
+        boolean result = checker.execute(input);
 
-        // Step 4: Display result
-        System.out.println("Input String : " + original);
+        System.out.println("Using Stack Strategy:");
+        System.out.println("Input  : " + input);
+        System.out.println("Result : " + (result ? "Palindrome" : "Not Palindrome"));
 
-        if (result) {
-            System.out.println("Result       : It is a Palindrome.");
-        } else {
-            System.out.println("Result       : It is NOT a Palindrome.");
-        }
+        // Switch strategy at runtime
+        checker.setStrategy(new DequeStrategy());
 
-        System.out.println("Program executed successfully.");
+        result = checker.execute(input);
+
+        System.out.println("\nUsing Deque Strategy:");
+        System.out.println("Input  : " + input);
+        System.out.println("Result : " + (result ? "Palindrome" : "Not Palindrome"));
+
+        System.out.println("\nProgram executed successfully.");
     }
 }
