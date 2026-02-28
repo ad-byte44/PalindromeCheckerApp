@@ -1,81 +1,40 @@
 /*
- * UseCase8PalindromeCheckerApp.java
- * Palindrome Checker Application - UC8
+ * UseCase9PalindromeCheckerApp.java
+ * Palindrome Checker Application - UC9
  * Version 1.0
  */
 
 public class PalindromeCheckerApp {
 
-    // Node class for Singly Linked List
-    static class Node {
-        char data;
-        Node next;
+    // Recursive method to check palindrome
+    public static boolean isPalindrome(String str, int start, int end) {
 
-        Node(char data) {
-            this.data = data;
-            this.next = null;
+        // Base condition: If start crosses end
+        if (start >= end) {
+            return true;
         }
+
+        // If characters don't match
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call for inner substring
+        return isPalindrome(str, start + 1, end - 1);
     }
 
     public static void main(String[] args) {
 
         // Step 1: Define the original string
-        String original = "madam";
+        String original = "rotor";
 
-        // Step 2: Convert string to linked list
-        Node head = null;
-        Node tail = null;
+        // Step 2: Call recursive method
+        boolean result = isPalindrome(original, 0, original.length() - 1);
 
-        for (int i = 0; i < original.length(); i++) {
-            Node newNode = new Node(original.charAt(i));
-
-            if (head == null) {
-                head = newNode;
-                tail = newNode;
-            } else {
-                tail.next = newNode;
-                tail = newNode;
-            }
-        }
-
-        // Step 3: Find middle using Fast & Slow pointer
-        Node slow = head;
-        Node fast = head;
-
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        // Step 4: Reverse second half
-        Node prev = null;
-        Node current = slow;
-
-        while (current != null) {
-            Node nextNode = current.next;
-            current.next = prev;
-            prev = current;
-            current = nextNode;
-        }
-
-        // Step 5: Compare first half and reversed second half
-        Node firstHalf = head;
-        Node secondHalf = prev;
-        boolean isPalindrome = true;
-
-        while (secondHalf != null) {
-            if (firstHalf.data != secondHalf.data) {
-                isPalindrome = false;
-                break;
-            }
-            firstHalf = firstHalf.next;
-            secondHalf = secondHalf.next;
-        }
-
-        // Step 6: Print result
+        // Step 3: Display result
         System.out.println("Original String : " + original);
 
-        if (isPalindrome) {
+        if (result) {
             System.out.println("Result          : It is a Palindrome.");
         } else {
             System.out.println("Result          : It is NOT a Palindrome.");
