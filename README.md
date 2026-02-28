@@ -4,41 +4,42 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case demonstrates an **advanced object-oriented design** using the **Strategy Pattern**, allowing dynamic selection of different palindrome algorithms at runtime.
+This use case focuses on **performance comparison** between different palindrome-checking algorithms to understand their practical efficiency.
 
 ---
 
-# 🚀 Use Case 12 (UC12): Strategy Pattern for Palindrome Algorithms
+# 🚀 Use Case 13 (UC13): Performance Comparison
 
 ## 🎯 Goal
 
-Enable dynamic selection of palindrome-checking algorithms using the Strategy Design Pattern.
+Compare the execution performance of multiple palindrome algorithms.
 
 ---
 
 ## 🔄 Flow
 
 1. Program starts.
-2. A `PalindromeStrategy` interface is defined.
-3. Multiple strategy implementations are created:
-    - `StackStrategy`
-    - `DequeStrategy`
-4. A `PalindromeChecker` context class is created.
-5. Strategy is injected at runtime.
-6. Algorithm is executed.
-7. Strategy can be changed dynamically.
-8. Result is displayed.
-9. Program exits.
+2. A test string is defined.
+3. Multiple palindrome algorithms are executed:
+   - Two-Pointer Approach
+   - Stack-Based Approach
+   - Deque-Based Approach
+4. Execution time is captured using `System.nanoTime()`.
+5. Results and execution times are displayed.
+6. Program exits.
 
 ---
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Interface
+### 🔹 System.nanoTime()
 
-Defines a common contract:
+Used to capture high-precision execution time.
+
+Example:
 
 ```java
-interface PalindromeStrategy {
-    boolean check(String input);
-}
+long startTime = System.nanoTime();
+boolean result = twoPointerCheck(input);
+long endTime = System.nanoTime();
+long executionTime = endTime - startTime;
