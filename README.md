@@ -4,41 +4,42 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case demonstrates a **recursive approach** to palindrome checking, strengthening understanding of recursion, base conditions, and the call stack mechanism.
+This use case enhances the palindrome logic by ignoring spaces, special characters, and case differences using string preprocessing and regular expressions.
 
 ---
 
-# 🚀 Use Case 9 (UC9): Recursive Palindrome Checker
+# 🚀 Use Case 10 (UC10): Case-Insensitive & Space-Ignored Palindrome
 
 ## 🎯 Goal
 
-Check whether a string is a palindrome using recursion.
+Check whether a string is a palindrome while:
+- Ignoring uppercase and lowercase differences
+- Ignoring spaces
+- Ignoring special characters
 
 ---
 
 ## 🔄 Flow
 
 1. Program starts.
-2. A string is defined.
-3. Recursive method is called with start and end indices.
-4. Characters at start and end are compared.
-5. If they match, recursion continues inward.
-6. Base condition stops recursion.
-7. Result is displayed.
-8. Program exits.
+2. A string with spaces and mixed case is defined.
+3. The string is normalized:
+    - Convert to lowercase.
+    - Remove non-alphanumeric characters.
+4. Apply palindrome checking logic.
+5. Display result.
+6. Program exits.
 
 ---
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Recursion
+### 🔹 String Preprocessing
 
-A programming technique where a method calls itself to solve smaller subproblems.
+Before checking for palindrome:
+- `toLowerCase()` is used to normalize case.
+- `replaceAll()` is used to remove unwanted characters.
 
-Each recursive call reduces the problem size by moving inward.
-
----
-
-### 🔹 Base Condition
-
-The base condition prevents infinite recursion.
+Example:
+```java
+String normalized = original.toLowerCase().replaceAll("[^a-z0-9]", "");
