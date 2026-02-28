@@ -2,17 +2,17 @@
 
 ## 📌 Project Overview
 
-The **Palindrome Checker App** is a console-based Java application that validates whether a given string is a palindrome.
+The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This project strengthens core Java programming fundamentals and introduces important concepts like string immutability and content comparison.
+This project strengthens core programming fundamentals and introduces efficient data structure concepts such as character arrays and the two-pointer technique.
 
 ---
 
-# 🚀 Use Case 3 (UC3): Palindrome Check Using String Reverse
+# 🚀 Use Case 4 (UC4): Character Array Based Palindrome Check
 
 ## 🎯 Goal
 
-Check whether a string is a palindrome by reversing it.
+Convert a string into a character array and check whether it is a palindrome using an efficient comparison method.
 
 ---
 
@@ -20,42 +20,40 @@ Check whether a string is a palindrome by reversing it.
 
 1. Program starts.
 2. A string is defined.
-3. The string is reversed using a `for` loop.
-4. The original string is compared with the reversed string.
-5. The result is displayed.
-6. Program exits.
+3. The string is converted into a `char[]`.
+4. Two pointers are initialized (start and end).
+5. Characters at both ends are compared.
+6. If all characters match, the string is a palindrome.
+7. Result is displayed.
+8. Program exits.
 
 ---
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Loop (for loop)
-Used to iterate through the characters of the string in reverse order.
+### 🔹 Character Array (`char[]`)
+A primitive array used to store individual characters of a string for direct index-based access.
 
-### 🔹 String Immutability
-In Java, `String` objects are immutable.  
-Each concatenation creates a new `String` object in memory.
+### 🔹 Array Indexing
+Accessing characters using index positions starting from 0.
 
-### 🔹 String Concatenation (+)
-Used to build the reversed string character by character.
+### 🔹 Two-Pointer Technique
+One pointer starts from the beginning and the other from the end.  
+This avoids unnecessary comparisons and improves efficiency.
 
-> Note: This approach is simple but not memory efficient for large strings. It prepares us to later learn `StringBuilder`.
-
-### 🔹 equals() Method
-Used to compare the actual content of two `String` objects rather than their memory references.
+### 🔹 Time Complexity Awareness
+Efficient comparison without creating additional String objects.
 
 ---
 
 ## 🗂️ Data Structure Used
 
-### String
-
-The `String` class in Java is an immutable sequence of characters.
+### char[]
 
 In this use case:
-- It stores the original text.
-- It is reversed manually using a loop.
-- It is compared using the `equals()` method.
+- The string is converted using `toCharArray()`.
+- Characters are accessed directly via indices.
+- Comparison is done in-place using two pointers.
 
 ---
 
