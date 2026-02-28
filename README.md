@@ -4,51 +4,41 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case introduces an **Object-Oriented Design approach**, where palindrome logic is encapsulated inside a dedicated service class, following core OOPS principles.
+This use case demonstrates an **advanced object-oriented design** using the **Strategy Pattern**, allowing dynamic selection of different palindrome algorithms at runtime.
 
 ---
 
-# 🚀 Use Case 11 (UC11): Object-Oriented Palindrome Service
+# 🚀 Use Case 12 (UC12): Strategy Pattern for Palindrome Algorithms
 
 ## 🎯 Goal
 
-Encapsulate palindrome validation logic inside a separate class and expose a public method for checking palindromes.
+Enable dynamic selection of palindrome-checking algorithms using the Strategy Design Pattern.
 
 ---
 
 ## 🔄 Flow
 
 1. Program starts.
-2. `PalindromeChecker` service class is created.
-3. `checkPalindrome()` method is exposed.
-4. Main application creates an object of the service class.
-5. The method is invoked.
-6. Result is displayed.
-7. Program exits.
+2. A `PalindromeStrategy` interface is defined.
+3. Multiple strategy implementations are created:
+    - `StackStrategy`
+    - `DequeStrategy`
+4. A `PalindromeChecker` context class is created.
+5. Strategy is injected at runtime.
+6. Algorithm is executed.
+7. Strategy can be changed dynamically.
+8. Result is displayed.
+9. Program exits.
 
 ---
 
-## 🧠 Key Concepts Used (OOPS)
+## 🧠 Key Concepts Used
 
-### 🔹 Encapsulation
+### 🔹 Interface
 
-Palindrome logic is hidden inside the `PalindromeChecker` class.  
-The internal implementation is not exposed to the main application.
-
----
-
-### 🔹 Single Responsibility Principle (SRP)
-
-- `PalindromeChecker` → Responsible only for palindrome logic.
-- `UseCase11PalindromeCheckerApp` → Responsible only for execution and display.
-
-Each class has a single clear responsibility.
-
----
-
-### 🔹 Abstraction
-
-The main program interacts only with:
+Defines a common contract:
 
 ```java
-checker.checkPalindrome(input);
+interface PalindromeStrategy {
+    boolean check(String input);
+}
