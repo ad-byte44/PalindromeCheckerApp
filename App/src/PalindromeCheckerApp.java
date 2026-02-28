@@ -1,42 +1,57 @@
 /*
- * UseCase10PalindromeCheckerApp.java
- * Palindrome Checker Application - UC10
+ * UseCase11PalindromeCheckerApp.java
+ * Palindrome Checker Application - UC11
  * Version 1.0
  */
 
-public class PalindromeCheckerApp {
+// PalindromeChecker Service Class
+class PalindromeChecker {
 
-    public static void main(String[] args) {
+    // Public method to check palindrome
+    public boolean checkPalindrome(String input) {
 
-        // Step 1: Define original string (with spaces & mixed case)
-        String original = "A man a plan a canal Panama";
+        if (input == null) {
+            return false;
+        }
 
-        // Step 2: Normalize string
-        // Convert to lowercase and remove all non-alphanumeric characters
-        String normalized = original.toLowerCase().replaceAll("[^a-z0-9]", "");
+        // Normalize input (optional enhancement)
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-        // Step 3: Apply two-pointer palindrome logic
         int start = 0;
         int end = normalized.length() - 1;
-        boolean isPalindrome = true;
 
         while (start < end) {
             if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
+                return false;
             }
             start++;
             end--;
         }
 
-        // Step 4: Display result
-        System.out.println("Original String   : " + original);
-        System.out.println("Normalized String : " + normalized);
+        return true;
+    }
+}
 
-        if (isPalindrome) {
-            System.out.println("Result            : It is a Palindrome.");
+public class PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        // Step 1: Create object of PalindromeChecker
+        PalindromeChecker checker = new PalindromeChecker();
+
+        // Step 2: Define test string
+        String original = "Madam";
+
+        // Step 3: Call service method
+        boolean result = checker.checkPalindrome(original);
+
+        // Step 4: Display result
+        System.out.println("Input String : " + original);
+
+        if (result) {
+            System.out.println("Result       : It is a Palindrome.");
         } else {
-            System.out.println("Result            : It is NOT a Palindrome.");
+            System.out.println("Result       : It is NOT a Palindrome.");
         }
 
         System.out.println("Program executed successfully.");

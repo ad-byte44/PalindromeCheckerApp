@@ -4,42 +4,51 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case enhances the palindrome logic by ignoring spaces, special characters, and case differences using string preprocessing and regular expressions.
+This use case introduces an **Object-Oriented Design approach**, where palindrome logic is encapsulated inside a dedicated service class, following core OOPS principles.
 
 ---
 
-# 🚀 Use Case 10 (UC10): Case-Insensitive & Space-Ignored Palindrome
+# 🚀 Use Case 11 (UC11): Object-Oriented Palindrome Service
 
 ## 🎯 Goal
 
-Check whether a string is a palindrome while:
-- Ignoring uppercase and lowercase differences
-- Ignoring spaces
-- Ignoring special characters
+Encapsulate palindrome validation logic inside a separate class and expose a public method for checking palindromes.
 
 ---
 
 ## 🔄 Flow
 
 1. Program starts.
-2. A string with spaces and mixed case is defined.
-3. The string is normalized:
-    - Convert to lowercase.
-    - Remove non-alphanumeric characters.
-4. Apply palindrome checking logic.
-5. Display result.
-6. Program exits.
+2. `PalindromeChecker` service class is created.
+3. `checkPalindrome()` method is exposed.
+4. Main application creates an object of the service class.
+5. The method is invoked.
+6. Result is displayed.
+7. Program exits.
 
 ---
 
-## 🧠 Key Concepts Used
+## 🧠 Key Concepts Used (OOPS)
 
-### 🔹 String Preprocessing
+### 🔹 Encapsulation
 
-Before checking for palindrome:
-- `toLowerCase()` is used to normalize case.
-- `replaceAll()` is used to remove unwanted characters.
+Palindrome logic is hidden inside the `PalindromeChecker` class.  
+The internal implementation is not exposed to the main application.
 
-Example:
+---
+
+### 🔹 Single Responsibility Principle (SRP)
+
+- `PalindromeChecker` → Responsible only for palindrome logic.
+- `UseCase11PalindromeCheckerApp` → Responsible only for execution and display.
+
+Each class has a single clear responsibility.
+
+---
+
+### 🔹 Abstraction
+
+The main program interacts only with:
+
 ```java
-String normalized = original.toLowerCase().replaceAll("[^a-z0-9]", "");
+checker.checkPalindrome(input);
