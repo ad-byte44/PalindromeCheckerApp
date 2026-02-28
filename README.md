@@ -4,15 +4,15 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This use case demonstrates the behavioral difference between two fundamental linear data structures — **Stack (LIFO)** and **Queue (FIFO)** — and uses them together to validate palindrome logic.
+This use case demonstrates an optimized approach using a **Deque (Double Ended Queue)** to efficiently compare characters from both ends without creating additional reversal structures.
 
 ---
 
-# 🚀 Use Case 6 (UC6): Queue + Stack Based Palindrome Check
+# 🚀 Use Case 7 (UC7): Deque-Based Optimized Palindrome Checker
 
 ## 🎯 Goal
 
-Demonstrate the difference between FIFO and LIFO principles using Queue and Stack to validate whether a string is a palindrome.
+Use a Deque to compare front and rear elements of a string to validate palindrome logic efficiently.
 
 ---
 
@@ -20,45 +20,43 @@ Demonstrate the difference between FIFO and LIFO principles using Queue and Stac
 
 1. Program starts.
 2. A string is defined.
-3. Characters are pushed into a stack.
-4. Characters are enqueued into a queue.
-5. Characters are popped from the stack.
-6. Characters are dequeued from the queue.
-7. The popped and dequeued characters are compared.
-8. Result is displayed.
-9. Program exits.
+3. Characters are inserted into a Deque.
+4. First and last characters are removed.
+5. Characters are compared.
+6. Comparison continues until Deque is empty or mismatch is found.
+7. Result is displayed.
+8. Program exits.
 
 ---
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Queue
-A linear data structure that follows the **First In First Out (FIFO)** principle.
+### 🔹 Deque (Double Ended Queue)
 
-### 🔹 Stack
-A linear data structure that follows the **Last In First Out (LIFO)** principle.
+A data structure that allows insertion and deletion from both front and rear ends.
 
-### 🔹 Enqueue & Dequeue Operations
-- `add()` → Insert into queue
-- `remove()` → Remove from queue
+### 🔹 Front and Rear Access
 
-### 🔹 Push & Pop Operations
-- `push()` → Insert into stack
-- `pop()` → Remove from stack
+- `addLast()` → Insert at rear
+- `removeFirst()` → Remove from front
+- `removeLast()` → Remove from rear
 
-### 🔹 Stack vs Queue
-This use case clearly demonstrates how:
-- Queue maintains original order (FIFO)
-- Stack reverses order (LIFO)
+This enables direct comparison of first and last characters.
 
-Comparing both outputs validates palindrome logic.
+### 🔹 Optimized Data Handling
+
+Unlike Stack + Queue approach:
+- No separate reversal string required
+- No duplicate storage structures
+- Cleaner and more efficient logic
 
 ---
 
-## 🗂️ Data Structures Used
+## 🗂️ Data Structure Used
 
-- `Stack<Character>`
-- `Queue<Character>` (Implemented using `LinkedList`)
+### Deque
 
----
+Implemented using:
 
+```java
+Deque<Character> deque = new ArrayDeque<>();
