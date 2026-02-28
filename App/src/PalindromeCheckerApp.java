@@ -1,42 +1,38 @@
 /*
- * UseCase4PalindromeCheckerApp.java
- * Palindrome Checker Application - UC4
+ * UseCase5PalindromeCheckerApp.java
+ * Palindrome Checker Application - UC5
  * Version 1.0
  */
+
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Step 1: Define the original string
-        String original = "madam";
+        String original = "level";
 
-        // Step 2: Convert string to character array
-        char[] characters = original.toCharArray();
+        // Step 2: Create a Stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        // Step 3: Initialize two pointers
-        int start = 0;
-        int end = characters.length - 1;
-
-        // Step 4: Assume it is a palindrome initially
-        boolean isPalindrome = true;
-
-        // Step 5: Two-pointer comparison
-        while (start < end) {
-
-            if (characters[start] != characters[end]) {
-                isPalindrome = false;
-                break;
-            }
-
-            start++;
-            end--;
+        // Step 3: Push all characters of the string into the stack
+        for (int i = 0; i < original.length(); i++) {
+            stack.push(original.charAt(i));
         }
 
-        // Step 6: Display result
-        System.out.println("Original String : " + original);
+        // Step 4: Pop characters from stack and build reversed string
+        String reversed = "";
 
-        if (isPalindrome) {
+        while (!stack.isEmpty()) {
+            reversed = reversed + stack.pop();
+        }
+
+        // Step 5: Compare original and reversed strings
+        System.out.println("Original String : " + original);
+        System.out.println("Reversed String : " + reversed);
+
+        if (original.equals(reversed)) {
             System.out.println("Result          : It is a Palindrome.");
         } else {
             System.out.println("Result          : It is NOT a Palindrome.");

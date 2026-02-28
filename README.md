@@ -4,15 +4,15 @@
 
 The **Palindrome Checker App** is a console-based Java application designed to validate whether a given string is a palindrome under different conditions.
 
-This project strengthens core programming fundamentals and introduces efficient data structure concepts such as character arrays and the two-pointer technique.
+This use case demonstrates the use of a **Stack** data structure to reverse characters and validate whether a string is a palindrome.
 
 ---
 
-# 🚀 Use Case 4 (UC4): Character Array Based Palindrome Check
+# 🚀 Use Case 5 (UC5): Stack-Based Palindrome Checker
 
 ## 🎯 Goal
 
-Convert a string into a character array and check whether it is a palindrome using an efficient comparison method.
+Use a stack to reverse the characters of a string and validate whether it is a palindrome.
 
 ---
 
@@ -20,41 +20,41 @@ Convert a string into a character array and check whether it is a palindrome usi
 
 1. Program starts.
 2. A string is defined.
-3. The string is converted into a `char[]`.
-4. Two pointers are initialized (start and end).
-5. Characters at both ends are compared.
-6. If all characters match, the string is a palindrome.
-7. Result is displayed.
+3. Characters of the string are pushed into a stack.
+4. Characters are popped from the stack (reversed order).
+5. The reversed string is formed.
+6. The original string is compared with the reversed string.
+7. Result is printed.
 8. Program exits.
 
 ---
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Character Array (`char[]`)
-A primitive array used to store individual characters of a string for direct index-based access.
+### 🔹 Stack
+A linear data structure that follows the **Last In First Out (LIFO)** principle.
 
-### 🔹 Array Indexing
-Accessing characters using index positions starting from 0.
+### 🔹 Push Operation
+Used to insert characters into the stack.
 
-### 🔹 Two-Pointer Technique
-One pointer starts from the beginning and the other from the end.  
-This avoids unnecessary comparisons and improves efficiency.
+### 🔹 Pop Operation
+Used to remove characters from the stack in reverse order.
 
-### 🔹 Time Complexity Awareness
-Efficient comparison without creating additional String objects.
+### 🔹 Reversal Logic
+Since stack follows LIFO, it naturally reverses the order of elements.
+
+### 🔹 equals() Method
+Used to compare the actual content of two strings.
 
 ---
 
 ## 🗂️ Data Structure Used
 
-### char[]
+### Stack
 
 In this use case:
-- The string is converted using `toCharArray()`.
-- Characters are accessed directly via indices.
-- Comparison is done in-place using two pointers.
+- `java.util.Stack` is used.
+- Characters are pushed one by one.
+- Popping elements gives reversed order.
 
 ---
-
-## 📂 Project Structure
